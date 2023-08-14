@@ -8,6 +8,7 @@ function GHeader({totalItems})  {
         <div className={classes['ge-font'] }>ReactMeals</div>
         <div  className={classes['ge-font'] }  ><button> {`cart`}</button>
                 <p>{totalItems.totalCount}</p>
+                <p>{`total $${totalItems.totalAmount} `}</p>
         </div>
 
     </div>

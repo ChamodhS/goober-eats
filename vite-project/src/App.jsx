@@ -25,7 +25,7 @@ function App() {
     {
       itemName: 'Schnitzel',
       itemDescription: "A european delicacy all the way from Hamburg",
-      itemPrice: 4.5
+      itemPrice: 4
     },
     {
       itemName: 'Classic CheesBurger',
