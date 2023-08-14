@@ -4,6 +4,7 @@ import GHeader from './Components/GHeader'
 import GIntroCard from './Components/GIntroCard'
 import GItemContainer from './Components/GItemContainer'
 import GOrderItem from './Components/GOrderItem'
+import GCartPreview from './Components/GCartPreview'
 
 
 function App() {
@@ -44,6 +45,8 @@ function App() {
           (itemData) => <GOrderItem itemObject={itemData} updateTotal={updateTotal}></GOrderItem>
         )}
       </GItemContainer>
+
+      <GCartPreview totalItems={totalItems}></GCartPreview>
 
     </>
   )
