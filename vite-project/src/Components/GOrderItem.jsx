@@ -8,10 +8,10 @@ function GOrderItem({ itemObject, updateTotal}) {
 
     function addItem() {
         const inputValue = document.getElementById(`Id${itemObject.itemName}`).valueAsNumber;
-        const price = itemObject.price;
-        updateTotal({totalCount:inputValue,totalAmount:price*inputValue});
+        const price = itemObject.itemPrice;
+        updateTotal({totalCount:inputValue,totalAmount:parseInt(price)*inputValue});
         const inputElement = document.getElementById(`Id${itemObject.itemName}`);
-        inputElement.value = 1
+        inputElement.value = 1;
     }
 
     return (
