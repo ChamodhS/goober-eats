@@ -1,12 +1,14 @@
 import classes from './GHeader.module.css'
 
 
-function GHeader()  {
+function GHeader({totalItems})  {
 
     return (<>
     <div className={classes['header']}>
         <div className={classes['ge-font'] }>ReactMeals</div>
-        <div  className={classes['ge-font'] }  ><button> {`Your cart ${0}`}</button></div>
+        <div  className={classes['ge-font'] }  ><button> {`cart`}</button>
+                <p>{totalItems.totalCount}</p>
+        </div>
 
     </div>
     </>)
