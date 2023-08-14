@@ -1,14 +1,17 @@
-import { useState } from "react";
+
 import classes from './GOrderItem.module.css'
 
-function GOrderItem({ itemObject}) {
 
-    const [itemCount, updateItemCount] = useState(0);
+function GOrderItem({ itemObject, updateTotal}) {
+
+    
 
     function addItem() {
-        console.log("order item incremented by 1");
-
-        updateItemCount(prevValue => prevValue)
+        const inputValue = document.getElementById(`Id${itemObject.itemName}`).valueAsNumber;
+        const price = itemObject.price;
+        updateTotal({totalCount:inputValue,totalAmount:price*inputValue});
+        const inputElement = document.getElementById(`Id${itemObject.itemName}`);
+        inputElement.value = 1
     }
 
     return (
@@ -20,7 +23,7 @@ function GOrderItem({ itemObject}) {
                     <li>{`$ ${itemObject.itemPrice}`}</li>
                 </ul>
                 <div>
-                    <input type="number" placeholder="0" min="0" max="5" ></input>
+                    <input id={"Id"+itemObject.itemName} type="number" defaultValue='1' min='1' max='5' ></input>
                     <button onClick={addItem}>Add</button>
                 </div>
             </div>
