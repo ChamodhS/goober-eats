@@ -1,0 +1,23 @@
+.header{
+background-color:#06C167 ;
+width:auto;
+padding:2px;
+display:flex;
+flex-direction: row;
+justify-content: space-between;
+
+}
+
+
+.ge-font {
+    font-family:Arial, Helvetica, sans-serif;
+    color: #FFFFFF;
+    font-weight: 600;
+    font-size: 30px;
+}
+
+
+.ge-spacing-small {
+    padding: 5px;
+}
+
