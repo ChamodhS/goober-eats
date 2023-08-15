@@ -49,12 +49,12 @@ function App() {
     switch (action.type) {
       case (CART_ACTIONS.UPDATE_CART_ITEM): {
 
-
         const updatedCartObject = updateCart(cartState, action.payload)
-
-        return ({...cartState,foodItems: updatedCartObject.foodItems,
+        return ({
+          ...cartState, foodItems: updatedCartObject.foodItems,
           totalAmount: updatedCartObject.totalAmount,
-          totalCount: updatedCartObject.totalCount,})
+          totalCount: updatedCartObject.totalCount,
+        })
 
       }
       default:
@@ -82,9 +82,6 @@ function App() {
     }
     return updatedCartObject;
   }
-
-  
-
 
   return (
     <>
