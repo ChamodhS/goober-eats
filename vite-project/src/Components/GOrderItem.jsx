@@ -1,4 +1,6 @@
 
+import { CART_ACTIONS } from '../App';
+import CartItem from '../Types/CartItem';
 import classes from './GOrderItem.module.css'
 
 
@@ -8,9 +10,8 @@ function GOrderItem({ itemObject, updateTotal}) {
 
     function addItem() {
         const inputValue = document.getElementById(`Id${itemObject.itemName}`).valueAsNumber;
-        const price = itemObject.itemPrice;
-        updateTotal({totalCount:inputValue,totalAmount:parseInt(price)*inputValue});
-        const inputElement = document.getElementById(`Id${itemObject.itemName}`);
+        const orderItemObject = new CartItem(itemObject.itemName,itemObject.itemPrice,inputValue);
+        updateTotal({type:CART_ACTIONS.UPDATE_CART_ITEM, payload:orderItemObject})
         inputElement.value = 1;
     }
 
