@@ -3,9 +3,9 @@ function GCartItem({cartItemObject}){
     return (
         <>
             <div>
-                <h3>{cartItemObject.itemName}</h3>
-                <p>{cartItemObject.itemPrice}</p>
-                <p>{cartItemObject.itemCount}</p>
+                <h3>ITEM:{cartItemObject.itemName}</h3>
+                <p>ITEM PRICE:{cartItemObject.itemPrice}</p>
+                <p>ITEM COUNT:{cartItemObject.itemCount}</p>
 
                 <button>-</button>
                 <button>+</button>

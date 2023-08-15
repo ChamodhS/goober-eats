@@ -67,8 +67,16 @@ function App() {
     const updatedCartArray = [...cartState.foodItems]
     const foodItemIndex = updatedCartArray.findIndex(x => x.itemName === orderItem.itemName);
 
+    // if (updatedCartArray[foodItemIndex]) {
+    //   updatedCartArray[foodItemIndex].itemCount = updatedCartArray[foodItemIndex].itemCount + orderItem.itemCount
+    // }
+    // the commented snippet above is incorrect 
+
     if (updatedCartArray[foodItemIndex]) {
-      updatedCartArray[foodItemIndex].itemCount = updatedCartArray[foodItemIndex].itemCount + orderItem.itemCount
+      updatedCartArray[foodItemIndex] = {
+        ...updatedCartArray[foodItemIndex],
+        itemCount: updatedCartArray[foodItemIndex].itemCount + orderItem.itemCount,
+      };
     }
 
     else {
