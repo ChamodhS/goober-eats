@@ -9,7 +9,8 @@ function GOrderItem({ itemObject, updateTotal}) {
     
 
     function addItem() {
-        const inputValue = document.getElementById(`Id${itemObject.itemName}`).valueAsNumber;
+        const inputElement = document.getElementById(`Id${itemObject.itemName}`);
+        const inputValue = inputElement.valueAsNumber;
         const orderItemObject = new CartItem(itemObject.itemName,itemObject.itemPrice,inputValue);
         updateTotal({type:CART_ACTIONS.UPDATE_CART_ITEM, payload:orderItemObject})
         inputElement.value = 1;

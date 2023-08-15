@@ -1,4 +1,4 @@
-function GCartPreview({totalItems,children}){
+function GCartPreview({cartState,children}){
 
     return (
         <>
@@ -13,7 +13,7 @@ function GCartPreview({totalItems,children}){
 
                 <div style={{display:'flexbox',flexDirection:"row", justifyContent:'space-between'}}>
                     <div>Total Amount:</div>  
-                    <div>{totalItems.totalAmount}</div>
+                    <div>{cartState.totalAmount}</div>
                 </div>
                     
 
