@@ -51,16 +51,89 @@ function App() {
 
         const updatedCartObject = updateCart(cartState, action.payload)
         return ({
-          ...cartState, foodItems: updatedCartObject.foodItems,
+          foodItems: updatedCartObject.foodItems,
           totalAmount: updatedCartObject.totalAmount,
           totalCount: updatedCartObject.totalCount,
         })
 
       }
+
+      case (CART_ACTIONS.INCREMENT_ITEM): {
+
+        const updatedCartObject = incrementCartItem(cartState, action.payload)
+        return ({
+          foodItems: updatedCartObject.foodItems,
+          totalAmount: updatedCartObject.totalAmount,
+          totalCount: updatedCartObject.totalCount,
+        })
+      }
+
+
+      case (CART_ACTIONS.DECREMENT_ITEM): {
+
+        const updatedCartObject = decrementCartItem(cartState, action.payload)
+        return ({
+          foodItems: updatedCartObject.foodItems,
+          totalAmount: updatedCartObject.totalAmount,
+          totalCount: updatedCartObject.totalCount,
+        })
+
+      }
+
       default:
         return cartState;
     }
   }
+
+
+
+
+  function incrementCartItem(cartState, orderItem) {
+    const updatedCartArray = [...cartState.foodItems]
+    const foodItemIndex = updatedCartArray.findIndex(x => x.itemName === orderItem.itemName);
+
+    if (updatedCartArray[foodItemIndex]) {
+      updatedCartArray[foodItemIndex] = {
+        ...updatedCartArray[foodItemIndex],
+        itemCount: updatedCartArray[foodItemIndex].itemCount + 1
+      };
+    }
+
+    const updatedArrayObject = {
+      foodItems: updatedCartArray,
+      totalAmount: cartState.totalAmount + orderItem.itemPrice,
+      totalCount: cartState.totalCount + 1
+    }
+
+    return updatedArrayObject;
+  }
+
+  function decrementCartItem(cartState, orderItem) {
+    const updatedCartArray = [...cartState.foodItems]
+    const foodItemIndex = updatedCartArray.findIndex(x => x.itemName === orderItem.itemName);
+
+    if (updatedCartArray[foodItemIndex]) {
+      updatedCartArray[foodItemIndex] = {
+        ...updatedCartArray[foodItemIndex],
+        itemCount: updatedCartArray[foodItemIndex].itemCount - 1
+      };
+
+      if (updatedCartArray[foodItemIndex].itemCount == 0) {
+        updatedCartArray = [...updatedCartArray.filter(x => x.itemCount !== 0)];
+      }
+    }
+
+    const updatedArrayObject = {
+      foodItems: updatedCartArray,
+      totalAmount: cartState.totalAmount + orderItem.itemPrice,
+      totalCount: cartState.totalCount - 1
+    }
+
+    return updatedArrayObject;
+  }
+
+
+
 
   function updateCart(cartState, orderItem) {
 

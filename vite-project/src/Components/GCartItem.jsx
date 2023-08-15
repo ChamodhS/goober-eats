@@ -1,5 +1,13 @@
 function GCartItem({cartItemObject}){
 
+        function addByOne(){
+            console.log('add')
+        }
+
+        function removeByOne(){
+            console.log('remove');
+        }
+
     return (
         <>
             <div>
@@ -7,10 +15,10 @@ function GCartItem({cartItemObject}){
                 <p>ITEM PRICE:{cartItemObject.itemPrice}</p>
                 <p>ITEM COUNT:{cartItemObject.itemCount}</p>
 
-                <button>-</button>
-                <button>+</button>
+                <button onClick={removeByOne}>-</button>
+                <button onClick={addByOne}>+</button>
                 
-            </div>   
+            </div  >   
         </>
     )
 }
