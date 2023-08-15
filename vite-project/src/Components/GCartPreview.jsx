@@ -1,3 +1,5 @@
+import GCartItem from "./GCartItem";
+
 function GCartPreview({cartState,children}){
 
     return (
@@ -7,7 +9,11 @@ function GCartPreview({cartState,children}){
             <div style={{display:'flexbox',flexDirection:"column"}}>
 
                 <div>
-                    {children}
+                    {cartState.foodItems.map(
+
+                        (x) => <GCartItem cartItemObject={x}></GCartItem>
+
+                    )}
                 </div>
 
 
