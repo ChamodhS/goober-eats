@@ -15,6 +15,9 @@ export const CART_ACTIONS = {
   DECREMENT_ITEM: 'decrement-cart-item'
 }
 
+
+  export const DispatchContext = createContext();
+
 function App() {
 
   const foodItems = [
@@ -109,7 +112,7 @@ function App() {
   }
 
   function decrementCartItem(cartState, orderItem) {
-    const updatedCartArray = [...cartState.foodItems]
+    let updatedCartArray = [...cartState.foodItems]
     const foodItemIndex = updatedCartArray.findIndex(x => x.itemName === orderItem.itemName);
 
     if (updatedCartArray[foodItemIndex]) {
@@ -120,12 +123,14 @@ function App() {
 
       if (updatedCartArray[foodItemIndex].itemCount == 0) {
         updatedCartArray = [...updatedCartArray.filter(x => x.itemCount !== 0)];
+        console.log(updatedCartArray);
+        
       }
     }
 
     const updatedArrayObject = {
       foodItems: updatedCartArray,
-      totalAmount: cartState.totalAmount + orderItem.itemPrice,
+      totalAmount: cartState.totalAmount - orderItem.itemPrice,
       totalCount: cartState.totalCount - 1
     }
 
@@ -166,6 +171,7 @@ function App() {
 
   return (
     <>
+      <DispatchContext.Provider value={dispatcher} >
       <GHeader cartState={cartState}></GHeader>
       <GIntroCard></GIntroCard>
       <GItemContainer>
@@ -174,8 +180,8 @@ function App() {
         )}
       </GItemContainer>
 
-      <GCartPreview cartState={cartState}></GCartPreview>
-
+      <GCartPreview  cartState={cartState}></GCartPreview>
+      </DispatchContext.Provider>
     </>
   )
 }

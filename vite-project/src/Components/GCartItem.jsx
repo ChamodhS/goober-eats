@@ -1,12 +1,20 @@
-function GCartItem({cartItemObject}){
+import { CART_ACTIONS } from "../App";
 
-        function addByOne(){
-            console.log('add')
-        }
+function GCartItem({ cartItemObject, onUpdateCart }) {
 
-        function removeByOne(){
-            console.log('remove');
-        }
+    const cartItem = {
+        itemName: cartItemObject.itemName,
+        itemPrice: cartItemObject.itemPrice
+    }
+
+    function incrementCartItem() {
+        console.log("click");
+        onUpdateCart({ type: CART_ACTIONS.INCREMENT_ITEM, payload:cartItem })
+    }
+
+    function decrementCartItem() {
+            onUpdateCart({type:CART_ACTIONS.DECREMENT_ITEM, payload:cartItem})
+    }
 
     return (
         <>
@@ -15,10 +23,9 @@ function GCartItem({cartItemObject}){
                 <p>ITEM PRICE:{cartItemObject.itemPrice}</p>
                 <p>ITEM COUNT:{cartItemObject.itemCount}</p>
 
-                <button onClick={removeByOne}>-</button>
-                <button onClick={addByOne}>+</button>
-                
-            </div  >   
+                <button onClick={decrementCartItem} value={0}>-</button>
+                <button onClick={incrementCartItem} value={1}>+</button>
+            </div  >
         </>
     )
 }

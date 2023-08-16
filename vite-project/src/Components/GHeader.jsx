@@ -10,7 +10,6 @@ function GHeader({cartState})  {
                 <p>{cartState.totalCount}</p>
                 <p>{`total $${cartState.totalAmount} `}</p>
         </div>
-
     </div>
     </>)
 }
