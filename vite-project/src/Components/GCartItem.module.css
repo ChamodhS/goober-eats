@@ -1,0 +1,41 @@
+/* Styles for the individual food items in the preview cart modal */
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .cart-item:last-child {
+    border-bottom: none;
+  }
+  
+  .cart-item h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #f09d0c;
+  }
+  
+  .cart-item p {
+    margin: 5px 0;
+    font-size: 0.9rem;
+    color: #555;
+  }
+  
+  .cart-item button {
+    background-color: transparent;
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 3px 8px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  }
+  
+  .cart-item button:hover {
+    background-color: #f0f0f0;
+    color: #ff9800;
+    border-color: #ff9800;
+  }

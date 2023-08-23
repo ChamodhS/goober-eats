@@ -1,4 +1,5 @@
 import { CART_ACTIONS } from "../App";
+import classes from './GCartItem.module.css'
 
 function GCartItem({ cartItemObject, onUpdateCart }) {
 
@@ -18,7 +19,7 @@ function GCartItem({ cartItemObject, onUpdateCart }) {
 
     return (
         <>
-            <div>
+            <div className={classes['cart-item']}>
                 <h3>ITEM:{cartItemObject.itemName}</h3>
                 <p>ITEM PRICE:{cartItemObject.itemPrice}</p>
                 <p>ITEM COUNT:{cartItemObject.itemCount}</p>

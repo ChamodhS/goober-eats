@@ -1,4 +1,4 @@
-import { createContext, useContext, useReducer, useState } from 'react'
+import { createContext, useContext, useEffect, useReducer, useState } from 'react'
 
 import GHeader from './Components/GHeader'
 import GIntroCard from './Components/GIntroCard'
@@ -6,6 +6,7 @@ import GItemContainer from './Components/GItemContainer'
 import GOrderItem from './Components/GOrderItem'
 import GCartPreview from './Components/GCartPreview'
 import CartItem from './Types/CartItem'
+import GAddOrderItem from './Components/GAddOrderItem'
 
 
 
@@ -16,9 +17,21 @@ export const CART_ACTIONS = {
 }
 
 
-  export const DispatchContext = createContext();
+export const DispatchContext = createContext();
 
 function App() {
+
+  useEffect(() => {
+    async function getOrderItems() {
+      const response = await fetch('http://localhost:8080/order-items', { type: "GET" }) // recieves in JSON
+      const object = await response.json()// converts HTTP call to json object 
+      console.log(object);
+    }
+
+    getOrderItems();
+  }
+
+    , []);
 
   const foodItems = [
     {
@@ -124,7 +137,7 @@ function App() {
       if (updatedCartArray[foodItemIndex].itemCount == 0) {
         updatedCartArray = [...updatedCartArray.filter(x => x.itemCount !== 0)];
         console.log(updatedCartArray);
-        
+
       }
     }
 
@@ -171,17 +184,17 @@ function App() {
 
   return (
     <>
-      <DispatchContext.Provider value={dispatcher} >
-      <GHeader cartState={cartState}></GHeader>
-      <GIntroCard></GIntroCard>
-      <GItemContainer>
-        {foodItems.map(
-          (itemData) => <GOrderItem itemObject={itemData} updateTotal={dispatcher}></GOrderItem>
-        )}
-      </GItemContainer>
-
-      <GCartPreview  cartState={cartState}></GCartPreview>
-      </DispatchContext.Provider>
+      {<><DispatchContext.Provider value={dispatcher}>
+        <GHeader cartState={cartState}></GHeader>
+        <GIntroCard></GIntroCard>
+        <GItemContainer>
+          {foodItems.map(
+            (itemData) => <GOrderItem itemObject={itemData} updateTotal={dispatcher}></GOrderItem>
+          )}
+        </GItemContainer>
+        <GCartPreview cartState={cartState}></GCartPreview>
+      </DispatchContext.Provider><GAddOrderItem></GAddOrderItem></>
+      }
     </>
   )
 }

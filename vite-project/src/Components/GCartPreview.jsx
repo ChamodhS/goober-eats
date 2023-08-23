@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import GCartItem from "./GCartItem";
 import { DispatchContext } from "../App";
+import classes from './GCartPreview.module.css'
 
 function GCartPreview({ cartState, children, }) {
 
@@ -9,7 +10,7 @@ function GCartPreview({ cartState, children, }) {
         <>
 
 
-            <div style={{ display: 'flexbox', flexDirection: "column" }}>
+            <div className={classes['preview-cart-modal']}>
 
                 <div>
                     {cartState.foodItems.map(
