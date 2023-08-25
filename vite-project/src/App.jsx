@@ -21,36 +21,18 @@ export const DispatchContext = createContext();
 
 function App() {
 
+    const [foodItemsState,setFoodItems] = useState([]);
   useEffect(() => {
     async function getOrderItems() {
       const response = await fetch('http://localhost:8080/order-items', { type: "GET" }) // recieves in JSON
       const object = await response.json()// converts HTTP call to json object 
-      console.log(object);
+      setFoodItems(object);
     }
 
     getOrderItems();
   }
 
     , []);
-
-  const foodItems = [
-    {
-      itemName: 'Sushi',
-      itemDescription: "finest authentic japanese salmon wrapped in a rice enclosure",
-      itemPrice: 2
-    },
-
-    {
-      itemName: 'Schnitzel',
-      itemDescription: "A european delicacy all the way from Hamburg",
-      itemPrice: 4
-    },
-    {
-      itemName: 'Classic CheesBurger',
-      itemDescription: "eagle screech, military industrial complex inspired freedom burger, raaaaaaah",
-      itemPrice: 69
-    }
-  ]
 
   const defaultCartState = {
     foodItems: [],
@@ -188,12 +170,14 @@ function App() {
         <GHeader cartState={cartState}></GHeader>
         <GIntroCard></GIntroCard>
         <GItemContainer>
-          {foodItems.map(
+          {foodItemsState.map(
             (itemData) => <GOrderItem itemObject={itemData} updateTotal={dispatcher}></GOrderItem>
           )}
         </GItemContainer>
         <GCartPreview cartState={cartState}></GCartPreview>
-      </DispatchContext.Provider><GAddOrderItem></GAddOrderItem></>
+      </DispatchContext.Provider>
+      
+      <GAddOrderItem></GAddOrderItem></>
       }
     </>
   )

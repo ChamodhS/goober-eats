@@ -1,16 +1,18 @@
+import GCartButton from './GCartButton';
 import classes from './GHeader.module.css'
 
 
 function GHeader({cartState})  {
 
     return (<>
-    <div className={classes['header']}>
-        <div className={classes['ge-font'] }>ReactMeals</div>
-        <div  className={classes['ge-font'] }  ><button> {`cart`}</button>
-                <p>{cartState.totalCount}</p>
-                <p>{`total $${cartState.totalAmount} `}</p>
+
+        <header>
+            <h1>ReactMeals</h1>
+            <GCartButton></GCartButton>
+        </header>
+        <div>
+            {/* <img src={mealsImage} alt='table full of food'> </img> */}
         </div>
-    </div>
     </>)
 }
 

@@ -3,6 +3,15 @@ import classes from "./GAddOrderItem.module.css"
 
 function GAddOrderItem() {
 
+    function onSubmit(event){
+        event.preventDefault();
+
+    }
+
+    function onCLear(event){
+        event.preventDefault();
+    }
+
     return (
         <>
             <div className={classes["card"]}>
@@ -23,8 +32,8 @@ function GAddOrderItem() {
                     </div>
 
                     <div className={classes["form-button-group"]}>
-                        <button className={classes["btn-submit"]}>Submit</button>
-                        <button className={classes["btn-clear"]}>Clear</button>
+                        <button className={classes["btn-submit"]} onClick={onSubmit}>Submit</button>
+                        <button className={classes["btn-clear"]} onClick={onCLear}>Clear</button>
                     </div>
                 </form>
             </div>
